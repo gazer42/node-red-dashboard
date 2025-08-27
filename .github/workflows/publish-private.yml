@@ -13,9 +13,9 @@ jobs:
     uses: 'flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml@v0.40.0'
     with:
       node: '[
-              {"version": "18", "tests": true, "lint": true},
-            ]'
-  
+        {"version": "18", "tests": true, "lint": true},
+        ]'
+
   publish:
     needs: build
     if: |
@@ -24,5 +24,6 @@ jobs:
     with:
       package_name: node-red-dashboard
       publish_package: true
+      build_package: true
     secrets:
       npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
